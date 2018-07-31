@@ -7,7 +7,7 @@ ec = boto3.client('ec2')
 iam = boto3.client('iam')
 
 """
-Lamda function to sent a webhook post, to slack for instance, to remind you that a date has been reached
+Lamda function to send a webhook post, to slack for instance, to remind you that a date has been reached
 in order to clean up ec2 instances, or deprovision some other resources
 This is a work in progress...
 Derived from https://serverlesscode.com/post/lambda-schedule-ebs-snapshot-backups-2/
