@@ -17,14 +17,14 @@ Derived from https://serverlesscode.com/post/lambda-schedule-ebs-snapshot-backup
 def lambda_handler(event, context):
     account_ids = '<AWS ACCOUNT ID>'
 
-    email_on = datetime.date.today().strftime('%Y-%m-%d')
+    notify_on = datetime.date.today().strftime('%Y-%m-%d')
     filters = [
-        {'Name': 'tag-key', 'Values': ['EmailOn']},
-        {'Name': 'tag-value', 'Values': [email_on]},
+        {'Name': 'tag-key', 'Values': ['NotifyOn']},
+        {'Name': 'tag-value', 'Values': [notify_on]},
     ]
     instance_response = ec.describe_instances(instance-id=account_ids, Filters=filters)
 
     for inst in instace_response['Snapshots']:
-        print "Emailing %s" % inst['InstanceId']
+        print "Posting %s" % inst['InstanceId']
         payload={"text":"Today is the day!"}
         r = requests.post('<WEBHOOK URL>', json=payload)
