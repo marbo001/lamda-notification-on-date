@@ -24,7 +24,7 @@ def lambda_handler(event, context):
     ]
     instance_response = ec.describe_instances(instance-id=account_ids, Filters=filters)
 
-    for inst in instace_response['Snapshots']:
+    for inst in instace_response['Instances']:
         print "Posting %s" % inst['InstanceId']
         payload={"text":"Today is the day!"}
         r = requests.post('<WEBHOOK URL>', json=payload)
