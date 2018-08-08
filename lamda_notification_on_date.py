@@ -35,5 +35,6 @@ def lambda_handler(event, context):
         for instance in reservation["Instances"]:
             instancelist.append(instance["InstanceId"])
    #send json payload to webhook
-    payload={"text":"Time to review: " + json.dumps(instancelist)}
-    r = requests.post('<WEBHOOK URL>', json=payload)
+    if len(instancelist) != 0:
+      payload={"text":"Time to review: " + json.dumps(instancelist)}
+      r = requests.post('<WEBHOOK URL>', json=payload)
